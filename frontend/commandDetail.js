@@ -5,6 +5,22 @@ let place = parseInt(sessionStorage.getItem("place"))
 place += 1
 sessionStorage.setItem("place", Number(place))
 
+// QR CODE
+var qrcode = new QRCode(document.getElementById("qrcode"), {
+	width : 400,
+	height : 400
+});
+
+// $("#text").
+// 	on("blur", function () {
+// 		makeCode();
+// 	}).
+// 	on("keydown", function (e) {
+// 		if (e.keyCode == 13) {
+// 			makeCode();
+// 		}
+// 	});
+
 
 for(var i = 0; i < getSelectedPlate.length; i++) {
     document.getElementById("commande").innerHTML += `
@@ -51,7 +67,7 @@ document.getElementById("iciAndPrixTotal").innerHTML += `
 
 (function () {  
     var  
-     form = $('#iciAndPrixTotal'),  
+     form = $('#qrcode'),  
      cache_width = form.width(),  
      a4 = [595.28, 841.89]; // for a4 size paper width and height  
 
@@ -89,3 +105,10 @@ document.getElementById("iciAndPrixTotal").innerHTML += `
         });
     }
 }());
+
+
+function makeCode () {	
+	qrcode.makeCode("manger ic: " + ICI + "\n" + "prix total: " + getPrixTotal + " MAD" + "\n" + "votre place: "+ place);
+}
+makeCode();
+

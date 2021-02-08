@@ -138,7 +138,7 @@ function addToCard(name, prix, img) {
     else {
       sessionStorage.setItem("place", 1)
     }
-    
+
     alert("product added to card")
     location.reload()
   }
